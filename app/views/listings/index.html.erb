@@ -1,21 +1,22 @@
 <h1> Todos</h1>
+<div id="clearfix">
+  <% @listings.each do |listing|%>
+      <ul>
+        <li>
+          <%= link_to listing.description, listing_path(listing)%>
+        </li>
+        <ul>
+          <li>
+            <%= link_to "Edit todo", edit_listing_path(listing)%>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <%= link_to "[Delete Todo]", listing, method: :delete, data: {confirm: "Are you sure ?"} %>
+          </li>
+        </ul>
+      </ul>
+  <%end%>
 
-<% @listings.each do |listing|%>
-  <ul>
-	  <li>
-	     <%= link_to listing.description, listing_path(listing)%>
-	   </li>
-	   <ul>
-		  <li>
-		     <%= link_to "Edit todo", edit_listing_path(listing)%>
-		   </li>
-		</ul>
-		 <ul>
-		  <li>
-		     <%= link_to "[Delete Todo]", listing, method: :delete, data: {confirm: "Are you sure ?"} %>
-		   </li>
-		</ul>
-   </ul>
-<%end%>
-
-<%= link_to "Create a new todo", new_listing_path %>
+  <%= link_to "Create a new todo", new_listing_path %>
+</div>
